@@ -22,7 +22,6 @@ public abstract class LibraryRoomDatabase : RoomDatabase(){
         @Volatile
         private var INSTANCE : LibraryRoomDatabase? = null
 
-
         fun getDatabase(context: Context, scope: CoroutineScope): LibraryRoomDatabase{
             val tempInstance = INSTANCE
             if (tempInstance != null){
@@ -56,6 +55,7 @@ public abstract class LibraryRoomDatabase : RoomDatabase(){
         }
         suspend fun populateDatabase(bookDao: BookDao){
             var book = Book("a","a","a","a","a")
+            Log.d("lista", book.title)
             bookDao.insert(book)
             //val all = bookDao.getAllBooks()
             //Log.d("lista", all[0].title)
