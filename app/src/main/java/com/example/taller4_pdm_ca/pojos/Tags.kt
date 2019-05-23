@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "tags_table")
-data class Tag (
+data class Tags (
     @PrimaryKey(autoGenerate = true)
     val id : Int,
     @ColumnInfo(name = "tag_list")
-    val tag : String
+    val tags : String
 )

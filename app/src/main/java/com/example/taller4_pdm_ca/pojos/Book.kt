@@ -21,5 +21,5 @@ data class Book(
     @ColumnInfo(name = "ISBN")
     val isbn : String,
     @ColumnInfo(name = "fav")
-    val fav : Int
+    val fav : Boolean
 )
