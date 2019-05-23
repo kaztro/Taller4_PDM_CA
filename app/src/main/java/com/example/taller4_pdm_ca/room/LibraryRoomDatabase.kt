@@ -63,7 +63,7 @@ public abstract class LibraryRoomDatabase : RoomDatabase(){
 
         }
         suspend fun populateDatabase(authorDao: AuthorDao, bookDao: BookDao, publisherDao: PublisherDao, tagsDao: TagsDao){
-            var book = Book("a","a","a","a","a","1",1)
+            var book = Book(0,"a","a","a","a","1",1)
             //Log.d("lista", book.title)
             bookDao.insert(book)
             //val all = bookDao.getAllBooks()
