@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.taller4_pdm_ca.pojos.BookxPublisher
 
 @Dao
-interface BookxPublisher{
+interface BookxPublisherDao{
 
     @Insert
     suspend fun insert(bookxPublisher: BookxPublisher)
