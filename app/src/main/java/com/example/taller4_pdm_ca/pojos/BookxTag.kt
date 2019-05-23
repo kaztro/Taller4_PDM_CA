@@ -8,13 +8,13 @@ import androidx.room.ForeignKey
     foreignKeys = [ForeignKey(entity = Book::class,
         parentColumns = arrayOf("id"),
         childColumns = arrayOf("idBook")), ForeignKey(
-        entity = Tags::class,
+        entity = Tag::class,
         parentColumns = arrayOf("id"),
         childColumns = arrayOf("idTags")
     )]
 )
 
-data class BookxTags(
+data class BookxTag(
     var idBook: Int,
-    var idTags: Int
+    var idTag: Int
 )

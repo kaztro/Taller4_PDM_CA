@@ -1,8 +1,6 @@
 package com.example.taller4_pdm_ca.room
 
 import android.content.Context
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -10,21 +8,21 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.taller4_pdm_ca.dao.AuthorDao
 import com.example.taller4_pdm_ca.dao.BookDao
 import com.example.taller4_pdm_ca.dao.PublisherDao
-import com.example.taller4_pdm_ca.dao.TagsDao
+import com.example.taller4_pdm_ca.dao.TagDao
 import com.example.taller4_pdm_ca.pojos.Author
 import com.example.taller4_pdm_ca.pojos.Book
 import com.example.taller4_pdm_ca.pojos.Publisher
-import com.example.taller4_pdm_ca.pojos.Tags
+import com.example.taller4_pdm_ca.pojos.Tag
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Author::class,Book::class,Publisher::class, Tags::class), version = 1)
+@Database(entities = arrayOf(Author::class,Book::class,Publisher::class, Tag::class), version = 1)
 public abstract class LibraryRoomDatabase : RoomDatabase(){
     abstract fun authorDao() : AuthorDao
     abstract fun bookDao() : BookDao
     abstract fun publisherDao() : PublisherDao
-    abstract fun tagsDao() : TagsDao
+    abstract fun tagsDao() : TagDao
 
 
     companion object{
@@ -62,7 +60,7 @@ public abstract class LibraryRoomDatabase : RoomDatabase(){
 
 
         }
-        suspend fun populateDatabase(authorDao: AuthorDao, bookDao: BookDao, publisherDao: PublisherDao, tagsDao: TagsDao){
+        suspend fun populateDatabase(authorDao: AuthorDao, bookDao: BookDao, publisherDao: PublisherDao, tagDao: TagDao){
             var book = Book(0,"a","a","a","a","1",1)
             //Log.d("lista", book.title)
             bookDao.insert(book)

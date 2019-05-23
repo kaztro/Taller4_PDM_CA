@@ -5,14 +5,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.taller4_pdm_ca.pojos.Book
+import com.example.taller4_pdm_ca.pojos.Tag
 
 @Dao
-interface BookDao {
+interface TagDao{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(book: Book)
+    suspend fun insert(tag: Tag)
 
-    @Query("SELECT * FROM book_table")
-    fun getAllBooks() : LiveData<List<Book>>
+    @Query("SELECT * FROM tags_table")
+    fun getAllTags() : LiveData<List<Tag>>
 }
