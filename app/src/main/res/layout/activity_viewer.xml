@@ -1,167 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:context=".activities.ViewerActivity">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".activities.ViewerActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_marginBottom="15dp"
-                android:id="@+id/iv_book_cover_av"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background"
+                    android:layout_marginBottom="15dp"
+                    android:id="@+id/iv_book_cover_av" android:contentDescription="TODO"/>
 
             <TextView
-                android:id="@+id/tv_title_tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/titulo"
-                android:textSize="20sp"
-                android:layout_below="@id/iv_book_cover_av"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="10sp"
-                android:layout_marginBottom="10sp"/>
+                    android:id="@+id/tv_title_tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/titulo"
+                    android:textSize="20sp"
+                    android:layout_below="@id/iv_book_cover_av"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginBottom="10sp" android:layout_marginStart="10sp"/>
 
             <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nadaxd"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/tv_title_tv1"
-                android:layout_below="@id/iv_book_cover_av"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"/>
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nadaxd"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_title_tv1"
+                    android:layout_below="@id/iv_book_cover_av"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black" android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tv_title_tv1"/>
 
             <TextView
-                android:id="@+id/tv_author_tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/autor"
-                android:textSize="20sp"
-                android:layout_below="@+id/tv_title_tv1"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="10sp"/>
+                    android:id="@+id/tv_author_tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/autor"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/tv_title_tv1"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10sp" android:layout_marginStart="10sp"/>
 
             <TextView
-                android:id="@+id/tv_author_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nadaxd"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/tv_author_tv2"
-                android:layout_below="@id/tv_title_tv1"
-                android:textSize="20sp"
-                android:textColor="@android:color/black" />
+                    android:id="@+id/tv_author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nadaxd"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_author_tv2"
+                    android:layout_below="@id/tv_title_tv1"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black" android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tv_author_tv2"/>
 
             <TextView
-                android:id="@+id/tv_isbn_tv3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ISBN: "
-                android:textSize="20sp"
-                android:layout_below="@+id/tv_author_name"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="10sp"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_isbn_tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/isbn"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/tv_author_name"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginTop="10sp" android:layout_marginStart="10sp"/>
 
             <TextView
-                android:id="@+id/tv_isbn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nadaxd"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/tv_isbn_tv3"
-                android:layout_below="@id/tv_author_name"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_isbn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nadaxd"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_isbn_tv3"
+                    android:layout_below="@id/tv_author_name"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="10sp" android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tv_isbn_tv3"/>
 
             <TextView
-                android:id="@+id/tv_edition_tv4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/edicion"
-                android:textSize="20sp"
-                android:layout_below="@+id/tv_isbn"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="10sp"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_edition_tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edicion"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/tv_isbn"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginTop="10sp" android:layout_marginStart="10sp"/>
 
             <TextView
-                android:id="@+id/tv_edition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nadaxd"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/tv_edition_tv4"
-                android:layout_below="@id/tv_isbn"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_edition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nadaxd"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_edition_tv4"
+                    android:layout_below="@id/tv_isbn"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="10sp" android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tv_edition_tv4"/>
 
             <TextView
-                android:id="@+id/tv_publisher_tv5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/editorial"
-                android:textSize="20sp"
-                android:layout_below="@+id/tv_edition"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="10sp"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_publisher_tv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/editorial"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/tv_edition"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginTop="10sp" android:layout_marginStart="10sp"/>
 
             <TextView
-                android:id="@+id/tv_publisher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nadaxd"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/tv_publisher_tv5"
-                android:layout_below="@id/tv_edition"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_publisher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nadaxd"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_publisher_tv5"
+                    android:layout_below="@id/tv_edition"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="10sp" android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tv_publisher_tv5"/>
 
             <TextView
-                android:id="@+id/tv_synopsis_tv6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/resumen"
-                android:textSize="20sp"
-                android:layout_below="@+id/tv_publisher"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="10sp"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_synopsis_tv6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/resumen"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/tv_publisher"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginTop="10sp" android:layout_marginStart="10sp"/>
 
             <TextView
-                android:id="@+id/tv_synopsis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nadaxd"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/tv_synopsis_tv6"
-                android:layout_below="@id/tv_publisher"
-                android:textSize="20sp"
-                android:textColor="@android:color/black"
-                android:layout_marginTop="10sp"/>
+                    android:id="@+id/tv_synopsis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nadaxd"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tv_synopsis_tv6"
+                    android:layout_below="@id/tv_publisher"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="10sp" android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tv_synopsis_tv6"/>
 
         </RelativeLayout>
 
