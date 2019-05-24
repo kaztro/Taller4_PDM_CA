@@ -3,4 +3,10 @@
     <string name="action_settings">Settings</string>
     <string name="book_default">BOOK</string>
     <string name="btn_favorite">Favorite</string>
+    <string name="titulo">Titulo:</string>
+    <string name="nadaxd">N/A</string>
+    <string name="autor">Autor:</string>
+    <string name="edicion">Edicion:</string>
+    <string name="editorial">Editorial:</string>
+    <string name="resumen">Resumen:</string>
 </resources>
