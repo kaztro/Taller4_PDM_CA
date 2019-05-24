@@ -13,10 +13,10 @@ import com.example.taller4_pdm_ca.pojos.Book
 interface AuthorxBookDao{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(authorxBookDao: AuthorxBookDao)
+    suspend fun insert(authorxBook: AuthorxBook)
 
     @Query("SELECT * FROM author_book_table")
-    fun getAllAuthorBooks() : LiveData<List<AuthorxBook>>
+    fun getAllAuthorxBooks() : LiveData<List<AuthorxBook>>
 
     @Query("SELECT * FROM author_table INNER JOIN author_book_table ON author_table.id=author_book_table.idAuthor WHERE author_book_table.idBook=:bookId")
     fun getAuthorsForBook(bookId:Int):LiveData<List<Author>>
