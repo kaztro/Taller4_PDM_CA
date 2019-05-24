@@ -17,15 +17,15 @@ import kotlinx.coroutines.launch
 class BookViewModel(application: Application) : AndroidViewModel(application) {
 
     private val bookRepository: BookRepository
-    private val tagsRepository: TagsRepository
-    private val authorRepository: AuthorRepository
-    private val publisherRepository: PublisherRepository
+    //private val tagsRepository: TagsRepository
+    //private val authorRepository: AuthorRepository
+    //private val publisherRepository: PublisherRepository
     //private val bookxTagsRepository: BookxTagsRepository
     //private val authorxBookRepository: AuthorxBookRepository
     val allBooks: LiveData<List<Book>>
-    val allTags: LiveData<List<Tags>>
-    val allAuthor: LiveData<List<Author>>
-    val allPublisher: LiveData<List<Publisher>>
+    //val allTags: LiveData<List<Tags>>
+    //val allAuthor: LiveData<List<Author>>
+    //val allPublisher: LiveData<List<Publisher>>
     //val allBookxTags: LiveData<List<BookxTags>>
     //val allAuthorxBook: LiveData<List<AuthorxBook>>
 
@@ -33,7 +33,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
         val booksDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).bookDao()
         bookRepository = BookRepository(booksDao)
 
-
+        /*
         val tagssDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).tagsDao()
 
         tagsRepository = TagsRepository(tagssDao)
@@ -43,14 +43,16 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
 
         val publishersDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).publisherDao()
         publisherRepository = PublisherRepository(publishersDao)
+        */
 
 
         allBooks = bookRepository.allBooks
 
-
+        /*
         allTags = tagsRepository.allTags
         allAuthor = authorRepository.allAuthors
         allPublisher = publisherRepository.allPublishers
+        */
 
     }
 
@@ -58,6 +60,8 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
         bookRepository.insert(book)
     }
 
+
+    /*
     fun insert(author: Author) = viewModelScope.launch(Dispatchers.IO) {
         authorRepository.insert(author)
     }
@@ -67,5 +71,6 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     fun insert(publisher: Publisher) = viewModelScope.launch(Dispatchers.IO) {
         publisherRepository.insert(publisher)
     }
+    */
 
 }
