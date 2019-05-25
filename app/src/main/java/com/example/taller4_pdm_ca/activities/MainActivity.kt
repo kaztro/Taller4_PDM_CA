@@ -46,22 +46,22 @@ class MainActivity : AppCompatActivity() {
         })*/
 
 
-        /*fab.setOnClickListener { view ->
-            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
+        fab.setOnClickListener { view ->
+            val intent = Intent(this@MainActivity, NewBookActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
-        }*/
+        }
     }
 
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.let {
                 //val list = Array<Author>()
-                val book = Book("",it.getStringExtra(NewWordActivity.EXTRA_REPLY),"","")
-                val author = Author( it.getStringExtra(NewWordActivity.EXTRA_REPLY2),true)
+                val book = Book(0,it.getStringExtra(NewBookActivity.EXTRA_REPLY),"","", "", "", false, 0)
+                //val author = Author( it.getStringExtra(NewWordActivity.EXTRA_REPLY2),true)
                 bookViewModel.insert(book)
-                authorViewModel.insert(author)
+                //authorViewModel.insert(author)
             }
         } else {
             Toast.makeText(
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG).show()
         }
-    }*/
+    }
 
     /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

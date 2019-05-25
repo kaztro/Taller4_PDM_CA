@@ -17,7 +17,7 @@ class BookListAdapter internal constructor(
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var words = emptyList<Book>()
-    private var authors = emptyList<Author>()// Cached copy of words
+   //private var authors = emptyList<Author>()// Cached copy of words
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView = itemView.findViewById(R.id.textView)
@@ -30,11 +30,11 @@ class BookListAdapter internal constructor(
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-        Log.d("algo", words.size.toString() + authors.size.toString())
+        //Log.d("algo", words.size.toString() + authors.size.toString())
         val current = words[position]
-        val currenta = authors[position]
+        //val currenta = authors[position]
         holder.wordItemView.text = current.title
-        holder.authItemView.text = currenta.name_author
+        //holder.authItemView.text = currenta.name_author
     }
 
     internal fun setWords(words: List<Book>) {
@@ -42,10 +42,9 @@ class BookListAdapter internal constructor(
         notifyDataSetChanged()
     }
 
-    internal fun setAuthors(authors: List<Author>){
+    /*internal fun setAuthors(authors: List<Author>){
         this.authors = authors
         notifyDataSetChanged()
-    }
-
+    }*/
     override fun getItemCount() = words.size
 }

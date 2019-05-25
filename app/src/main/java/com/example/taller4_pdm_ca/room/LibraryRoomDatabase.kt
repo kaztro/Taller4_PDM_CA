@@ -74,9 +74,18 @@ public abstract class LibraryRoomDatabase : RoomDatabase() {
             publisherDao: PublisherDao,
             tagsDao: TagsDao
         ) {
-            var book = Book(0, "a", "a", "a", "a", "1", false)
+            //publisherDao.deleteAll()
+            //bookDao.deleteAll()
+
+
+            val pub = Publisher(0,"Planeta")
+            publisherDao.insert(pub)
+
+            var book = Book(0, "a", "a", "a", "a", "1", false, 1)
             //Log.d("lista", book.title)
-            //bookDao.insert(book)
+            bookDao.insert(book)
+
+
             //val all = bookDao.getAllBooks()
             //Log.d("lista", all[0].title)
         }
