@@ -1,62 +1,89 @@
 package com.example.taller4_pdm_ca.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.taller4_pdm_ca.R
-import com.example.taller4_pdm_ca.adapters.BookAdapter
+import com.example.taller4_pdm_ca.adapter.BookListAdapter
 import com.example.taller4_pdm_ca.pojos.Book
 import com.example.taller4_pdm_ca.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var bookViewModel: BookViewModel
-    private var flag = true
-    private var switch = true
-    private lateinit var bookAdapter: BookAdapter
+    private val newWordActivityRequestCode = 1
+    private lateinit var bookViewModel: BookViewModel
+    //private lateinit var authorViewModel: AuthorViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bookAdapter = BookAdapter(this, { book: Book -> favoriteBook(book) }, { book: Book -> triggerActivity(book) })
+        //setSupportActionBar(toolbar)
 
-
-        //var bookAdapter = BooksAdapter(this) { book:Book->bookOnClicked(book)}
-        rv_books.adapter = bookAdapter
-        rv_books.layoutManager = LinearLayoutManager(this)
-
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_books)
+        val adapter = BookListAdapter(this)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
-
-
+        //authorViewModel = ViewModelProviders.of(this).get(AuthorViewModel::class.java)
 
         bookViewModel.allBooks.observe(this, Observer { books ->
-            bookAdapter.setBooks(books)
+            // Update the cached copy of the words in the adapter.
+            books?.let { adapter.setWords(it) }
         })
-        initClicksListeners()
+
+        /*authorViewModel.allAuthors.observe(this, Observer { authors ->
+            // Update the cached copy of the words in the adapter.
+            authors?.let { adapter.setAuthors(it) }
+        })*/
+
+
+        /*fab.setOnClickListener { view ->
+            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
+            startActivityForResult(intent, newWordActivityRequestCode)
+        }*/
     }
 
-    private fun initClicksListeners(){
-        btn_favorites.setOnClickListener(){
-            bookViewModel.favoriteBooks.observe(this, Observer { favBooks -> //This favorites books deberia estar en ViewModel
-                bookAdapter.setBooks(favoriteBooks)
-            })
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            data?.let {
+                //val list = Array<Author>()
+                val book = Book("",it.getStringExtra(NewWordActivity.EXTRA_REPLY),"","")
+                val author = Author( it.getStringExtra(NewWordActivity.EXTRA_REPLY2),true)
+                bookViewModel.insert(book)
+                authorViewModel.insert(author)
+            }
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG).show()
         }
-    }
+    }*/
 
-    private fun triggerActivity(book: Book) {
-        val bundleBook = Bundle()
-            bundleBook.putParcelable("BOOK", book)
-        startActivity(Intent(this, ViewerActivity::class.java).putExtras(bundleBook))
-    }
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }*/
 
-    private fun bookFavorito(book: Book) {
-        bookViewModel.favoriteBooks.observe(this, Observer { favorites ->
-            bookAdapter.setBooks(favorites)
-        })
-        bookViewModel.chekinoutF(book)
-    }
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
+        }
+    }*/
 }

@@ -11,8 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/btAllBooks"
-        android:text="Libros favoritos" />
+        android:text="" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_books"

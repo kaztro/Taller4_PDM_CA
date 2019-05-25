@@ -1,5 +1,5 @@
 package com.example.taller4_pdm_ca.activities
-
+/*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,7 @@ import com.example.taller4_pdm_ca.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_viewer.*
 import kotlinx.android.synthetic.main.activity_viewer.view.*
 
-class ViewerActivity : AppCompatActivity() {
+class ViewerActivity : AppCompatActivity() {*/
 /*
     lateinit var bookViewModel: BookViewModel
 
@@ -39,7 +39,7 @@ class ViewerActivity : AppCompatActivity() {
             .into(iv_book_cover_av)
 
 
-    }*/
+    }*/  /*
 private var book = Book()
     private var authBook = Author()
     private var publiBook = Publisher()
@@ -66,4 +66,4 @@ private var book = Book()
         view.tv_publisher.text = dataPubli.name
         view.tv_synopsis.text = data.synopsis
     }
-}
+}*/

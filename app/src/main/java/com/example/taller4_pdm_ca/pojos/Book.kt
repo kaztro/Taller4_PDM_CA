@@ -30,5 +30,5 @@ data class Book(
     @ColumnInfo(name = "fav")
     val fav: Boolean,
     @ColumnInfo(name = "idPublisher")
-    val idPublisher: Publisher
+    val idPublisher: Int
 )
