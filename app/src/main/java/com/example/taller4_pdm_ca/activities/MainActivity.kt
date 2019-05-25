@@ -11,6 +11,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var bookViewModel: BookViewModel
+    private var flag = true
+    private var switch = true
+    private lateinit var adapter: Adapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
