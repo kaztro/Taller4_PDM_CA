@@ -6,8 +6,16 @@
         android:layout_height="match_parent"
         tools:context=".activities.MainActivity">
 
+    <Button
+        android:id="@+id/btn_favorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/btAllBooks"
+        android:text="Libros favoritos" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLibritos"
+        android:id="@+id/rv_books"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
