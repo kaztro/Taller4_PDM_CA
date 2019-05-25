@@ -14,8 +14,15 @@ interface BookDao {
     suspend fun insert(book: Book)
 
     @Query("SELECT * FROM book_table")
-    fun getAllBooks() : LiveData<List<Book>>
+    fun getAllBooks(): LiveData<List<Book>>
 
     @Query("SELECT * FROM book_table WHERE fav = 1")
-    fun getFavoritesBooks() : LiveData<List<Book>>
+    fun getFavoritesBooks(): LiveData<List<Book>>
+
+    @Query("UPDATE book_table SET fav = 1 WHERE id = :id")
+    suspend fun addFavorite(id: Int)
+
+    @Query("UPDATE book_table SET fav = 0 WHERE id = :id")
+    suspend fun removeFavorite(id: Int)
+
 }

@@ -15,4 +15,14 @@ class BookRepository(private val bookDao: BookDao) {
         bookDao.insert(book)
     }
 
+    @WorkerThread
+    suspend fun addFavorite(id: Int) {
+        bookDao.addFavorite(id)
+    }
+
+    @WorkerThread
+    suspend fun removeFavorite(id: Int) {
+        bookDao.removeFavorite(id)
+    }
+
 }
