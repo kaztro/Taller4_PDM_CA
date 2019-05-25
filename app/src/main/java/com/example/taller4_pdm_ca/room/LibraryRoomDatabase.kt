@@ -7,24 +7,29 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.taller4_pdm_ca.dao.AuthorDao
-import com.example.taller4_pdm_ca.dao.BookDao
-import com.example.taller4_pdm_ca.dao.PublisherDao
-import com.example.taller4_pdm_ca.dao.TagsDao
-import com.example.taller4_pdm_ca.pojos.Author
-import com.example.taller4_pdm_ca.pojos.Book
-import com.example.taller4_pdm_ca.pojos.Publisher
-import com.example.taller4_pdm_ca.pojos.Tags
+import com.example.taller4_pdm_ca.dao.*
+import com.example.taller4_pdm_ca.pojos.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(Author::class, Book::class, Publisher::class, Tags::class), version = 1)
+@Database(
+    entities = arrayOf(
+        Author::class,
+        Book::class,
+        Publisher::class,
+        Tags::class,
+        AuthorxBook::class,
+        BookxTags::class
+    ), version = 3
+)
 public abstract class LibraryRoomDatabase : RoomDatabase() {
     abstract fun authorDao(): AuthorDao
     abstract fun bookDao(): BookDao
     abstract fun publisherDao(): PublisherDao
     abstract fun tagsDao(): TagsDao
+    abstract fun authorXBookDao(): AuthorxBookDao
+    abstract fun bookXTagsDao(): BookxTagsDao
 
 
     companion object {
@@ -41,7 +46,8 @@ public abstract class LibraryRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     LibraryRoomDatabase::class.java,
                     "Library_Database"
-                ).addCallback(LibraryDatabaseCallback(scope)).build()
+                ).fallbackToDestructiveMigration()
+                    .addCallback(LibraryDatabaseCallback(scope)).build()
                 INSTANCE = instance
                 return instance
             }

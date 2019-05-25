@@ -12,7 +12,7 @@ import com.example.taller4_pdm_ca.pojos.Tags
 @Dao
 interface BookxTagsDao{
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insert(bookxTags: BookxTags)
 
     @Query("SELECT * FROM book_tags_table")

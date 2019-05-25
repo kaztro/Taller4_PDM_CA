@@ -12,7 +12,7 @@ import com.example.taller4_pdm_ca.pojos.Book
 @Dao
 interface AuthorxBookDao{
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insert(authorxBook: AuthorxBook)
 
     @Query("SELECT * FROM author_book_table")

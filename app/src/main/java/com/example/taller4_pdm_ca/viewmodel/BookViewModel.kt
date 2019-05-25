@@ -5,10 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.taller4_pdm_ca.pojos.*
-import com.example.taller4_pdm_ca.repositories.AuthorRepository
 import com.example.taller4_pdm_ca.repositories.BookRepository
-import com.example.taller4_pdm_ca.repositories.PublisherRepository
-import com.example.taller4_pdm_ca.repositories.TagsRepository
 import com.example.taller4_pdm_ca.room.LibraryRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,11 +14,6 @@ import kotlinx.coroutines.launch
 class BookViewModel(application: Application) : AndroidViewModel(application) {
 
     private val bookRepository: BookRepository
-    //private val tagsRepository: TagsRepository
-    //private val authorRepository: AuthorRepository
-    //private val publisherRepository: PublisherRepository
-    //private val bookxTagsRepository: BookxTagsRepository
-    //private val authorxBookRepository: AuthorxBookRepository
     val allBooks: LiveData<List<Book>>
     val favBooks: LiveData<List<Book>>
     //val allTags: LiveData<List<Tags>>
@@ -31,21 +23,13 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     //val allAuthorxBook: LiveData<List<AuthorxBook>>
 
     init {
-        val booksDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).bookDao()
-        bookRepository = BookRepository(booksDao)
-
-        /*
-        val tagssDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).tagsDao()
-
-        tagsRepository = TagsRepository(tagssDao)
-
-        val authorsDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).authorDao()
-        authorRepository = AuthorRepository(authorsDao)
-
-        val publishersDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).publisherDao()
-        publisherRepository = PublisherRepository(publishersDao)
-        */
-
+        val bookDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).bookDao()
+        val authorDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).authorDao()
+        val tagsDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).tagsDao()
+        val publisherDao = LibraryRoomDatabase.getDatabase(application,viewModelScope).publisherDao()
+        val authorXBookDao = LibraryRoomDatabase.getDatabase(application, viewModelScope).authorXBookDao()
+        val bookXTagsDao = LibraryRoomDatabase.getDatabase(application, viewModelScope).bookXTagsDao()
+        bookRepository = BookRepository(bookDao,authorDao,tagsDao,publisherDao,authorXBookDao,bookXTagsDao)
 
         allBooks = bookRepository.allBooks
         favBooks = bookRepository.favoritesBooks
@@ -59,7 +43,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun insert(book: Book) = viewModelScope.launch(Dispatchers.IO) {
-        bookRepository.insert(book)
+        bookRepository.insertBook(book)
     }
 
     fun getAll():LiveData<List<Book>> = allBooks
