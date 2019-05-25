@@ -10,13 +10,13 @@ import com.example.taller4_pdm_ca.pojos.Book
 class AuthorxBookRepository(private val authorxBookDao: AuthorxBookDao) {
     val allAuthorxBooks: LiveData<List<AuthorxBook>> = authorxBookDao.getAllAuthorxBooks()
 
-    fun getAuthorsForBook(bookId: Int): LiveData<List<Author>> {
+    /*fun getAuthorsForBook(bookId: Int): LiveData<List<Author>> {
         return authorxBookDao.getAuthorsForBook(bookId)
-    }
+    }*/
 
-    fun getBooksForAuthor(authorId: Int): LiveData<List<Book>> {
+    /*fun getBooksForAuthor(authorId: Int): LiveData<List<Book>> {
         return authorxBookDao.getBooksForAuthor(authorId)
-    }
+    }*/
 
     @WorkerThread
     suspend fun insert(authorxBook: AuthorxBook) {

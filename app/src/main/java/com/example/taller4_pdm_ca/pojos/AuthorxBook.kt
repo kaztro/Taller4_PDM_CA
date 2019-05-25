@@ -4,13 +4,13 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 
 @Entity(tableName = "author_book_table",
-    primaryKeys = ["idAuthor", "idBook"],
+    primaryKeys = arrayOf("idAuthor", "idBook"),
     foreignKeys = [ForeignKey(entity = Author::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("idAuthor")), ForeignKey(
+        parentColumns = ["id"],
+        childColumns = ["idAuthor"]), ForeignKey(
         entity = Book::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("idBook")
+        parentColumns = ["id"],
+        childColumns = ["idBook"]
     )]
 )
 

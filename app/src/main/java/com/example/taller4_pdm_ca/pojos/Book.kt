@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey
     )]
 )
 data class Book(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey//(autoGenerate = true)
     val id: Int,
     @ColumnInfo(name = "Cover")
     val cover_url: String,

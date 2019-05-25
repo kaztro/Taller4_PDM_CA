@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "publisher_table")
 data class Publisher(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey//(autoGenerate = true)
     val id : Int,
     @ColumnInfo(name = "Name")
     val name : String
