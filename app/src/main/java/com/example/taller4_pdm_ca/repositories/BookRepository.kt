@@ -8,6 +8,7 @@ import com.example.taller4_pdm_ca.pojos.Book
 class BookRepository(private val bookDao: BookDao) {
 
     val allBooks: LiveData<List<Book>> = bookDao.getAllBooks()
+    val favoritesBooks: LiveData<List<Book>> = bookDao.getFavoritesBooks()
 
     @WorkerThread
     suspend fun insert(book: Book) {

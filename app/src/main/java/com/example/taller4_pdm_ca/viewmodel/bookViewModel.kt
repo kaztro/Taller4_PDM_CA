@@ -23,6 +23,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     //private val bookxTagsRepository: BookxTagsRepository
     //private val authorxBookRepository: AuthorxBookRepository
     val allBooks: LiveData<List<Book>>
+    val favBooks: LiveData<List<Book>>
     //val allTags: LiveData<List<Tags>>
     //val allAuthor: LiveData<List<Author>>
     //val allPublisher: LiveData<List<Publisher>>
@@ -47,6 +48,7 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
 
 
         allBooks = bookRepository.allBooks
+        favBooks = bookRepository.favoritesBooks
 
         /*
         allTags = tagsRepository.allTags
@@ -60,6 +62,8 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
         bookRepository.insert(book)
     }
 
+    fun getAll():LiveData<List<Book>> = allBooks
+    fun getFavoritesBooks():LiveData<List<Book>> = favBooks
 
     /*
     fun insert(author: Author) = viewModelScope.launch(Dispatchers.IO) {
