@@ -10,6 +10,9 @@ import com.example.taller4_pdm_ca.pojos.Book
 @Dao
 interface BookDao {
 
+    @Query("DELETE FROM book_table")
+    fun deleteAll()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(book: Book)
 

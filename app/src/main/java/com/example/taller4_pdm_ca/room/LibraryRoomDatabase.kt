@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+<<<<<<< HEAD
 @Database(
     entities = arrayOf(
         Author::class,
@@ -23,6 +24,9 @@ import kotlinx.coroutines.launch
         BookxTags::class
     ), version = 4
 )
+=======
+@Database(entities = arrayOf(Author::class, Book::class, Publisher::class, Tags::class), version = 2)
+>>>>>>> 2615df79b10a4f8c2fae1826079759708df7eea2
 public abstract class LibraryRoomDatabase : RoomDatabase() {
     abstract fun authorDao(): AuthorDao
     abstract fun bookDao(): BookDao
@@ -47,7 +51,11 @@ public abstract class LibraryRoomDatabase : RoomDatabase() {
                     LibraryRoomDatabase::class.java,
                     "Library_Database"
                 ).fallbackToDestructiveMigration()
+<<<<<<< HEAD
                     .addCallback(LibraryDatabaseCallback(scope)).build()
+=======
+                .addCallback(LibraryDatabaseCallback(scope)).build()
+>>>>>>> 2615df79b10a4f8c2fae1826079759708df7eea2
                 INSTANCE = instance
                 return instance
             }
@@ -80,9 +88,19 @@ public abstract class LibraryRoomDatabase : RoomDatabase() {
             publisherDao: PublisherDao,
             tagsDao: TagsDao
         ) {
-            //var book = Book(0, "a", "a", "a", "a", "1", false)
+            //publisherDao.deleteAll()
+            //bookDao.deleteAll()
+
+
+            val pub = Publisher(0,"Planeta")
+            publisherDao.insert(pub)
+
+            var book = Book(0, "a", "a", "a", "a", "1", false, 0)
             //Log.d("lista", book.title)
-            //bookDao.insert(book)
+            bookDao.insert(book)
+
+
+
             //val all = bookDao.getAllBooks()
             //Log.d("lista", all[0].title)
         }

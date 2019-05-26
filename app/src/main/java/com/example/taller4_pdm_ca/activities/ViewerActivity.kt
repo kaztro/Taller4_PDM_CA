@@ -16,8 +16,8 @@ import com.example.taller4_pdm_ca.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_viewer.*
 import kotlinx.android.synthetic.main.activity_viewer.view.*
 
-class ViewerActivity : AppCompatActivity() {*/
-/*
+class ViewerActivity : AppCompatActivity() {
+
     lateinit var bookViewModel: BookViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class ViewerActivity : AppCompatActivity() {*/
             .into(iv_book_cover_av)
 
 
-    }*/  /*
+    }
 private var book = Book()
     private var authBook = Author()
     private var publiBook = Publisher()
