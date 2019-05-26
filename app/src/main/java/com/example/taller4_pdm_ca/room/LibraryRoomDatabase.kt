@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
         Tags::class,
         AuthorxBook::class,
         BookxTags::class
-    ), version = 3
+    ), version = 4
 )
 public abstract class LibraryRoomDatabase : RoomDatabase() {
     abstract fun authorDao(): AuthorDao
