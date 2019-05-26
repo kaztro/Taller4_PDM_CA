@@ -3,7 +3,6 @@ package com.example.taller4_pdm_ca.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         //setSupportActionBar(toolbar)
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_books)
-        val adapter = BookListAdapter({item: Book -> clickitem(item)})
+        val adapter = BookListAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
@@ -47,27 +46,22 @@ class MainActivity : AppCompatActivity() {
         })*/
 
 
-        fab.setOnClickListener { view ->
-            val intent = Intent(this@MainActivity, NewBookActivity::class.java)
+        /*fab.setOnClickListener { view ->
+            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
             startActivityForResult(intent, newWordActivityRequestCode)
-        }
-    }
-    fun clickitem(item: Book){
-        Log.d("olv", item.title)
-        val intent = Intent(this@MainActivity, NewBookActivity::class.java)
-        startActivityForResult(intent, newWordActivityRequestCode)
+        }*/
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.let {
                 //val list = Array<Author>()
-                val book = Book(0,"",it.getStringExtra(NewBookActivity.EXTRA_REPLY),"", "", "", false, 0)
-                //val author = Author( it.getStringExtra(NewWordActivity.EXTRA_REPLY2),true)
+                val book = Book("",it.getStringExtra(NewWordActivity.EXTRA_REPLY),"","")
+                val author = Author( it.getStringExtra(NewWordActivity.EXTRA_REPLY2),true)
                 bookViewModel.insert(book)
-                //authorViewModel.insert(author)
+                authorViewModel.insert(author)
             }
         } else {
             Toast.makeText(
@@ -75,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 R.string.empty_not_saved,
                 Toast.LENGTH_LONG).show()
         }
-    }
+    }*/
 
     /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

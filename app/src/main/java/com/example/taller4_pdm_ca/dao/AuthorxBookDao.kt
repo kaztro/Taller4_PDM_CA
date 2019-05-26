@@ -18,9 +18,9 @@ interface AuthorxBookDao{
     @Query("SELECT * FROM author_book_table")
     fun getAllAuthorxBooks() : LiveData<List<AuthorxBook>>
 
-    //@Query("SELECT * FROM author_table INNER JOIN author_book_table ON author_table.id=author_book_table.idAuthor WHERE author_book_table.idBook=:bookId")
-    //fun getAuthorsForBook(bookId:Int):LiveData<List<Author>>
+    @Query("SELECT * FROM author_table INNER JOIN author_book_table ON author_table.id=author_book_table.idAuthor WHERE author_book_table.idBook=:bookId")
+    fun getAuthorsForBook(bookId:Int):LiveData<List<Author>>
 
-    //@Query("SELECT * FROM book_table INNER JOIN author_book_table ON book_table.id=author_book_table.idBook WHERE author_book_table.idAuthor=:authorId")
-    //fun getBooksForAuthor(authorId:Int):LiveData<List<Book>>
+    @Query("SELECT * FROM book_table INNER JOIN author_book_table ON book_table.id=author_book_table.idBook WHERE author_book_table.idAuthor=:authorId")
+    fun getBooksForAuthor(authorId:Int):LiveData<List<Book>>
 }

@@ -10,9 +10,6 @@ import com.example.taller4_pdm_ca.pojos.Publisher
 @Dao
 interface PublisherDao{
 
-    @Query("DELETE FROM publisher_table")
-    fun deleteAll()
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(publisher: Publisher)
 
