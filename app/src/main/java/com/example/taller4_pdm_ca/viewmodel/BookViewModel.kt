@@ -102,12 +102,12 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     fun insertListTag(tags: ArrayList<String>, book: Book) {
         var tagList = allTags.value
         if (tagList != null) {
-            var idPublisher: Int
-            if (tagList.isNotEmpty()) idPublisher = tagList.get(tagList.indexOf(tagList.get(tagList.size - 1))).id
-            else idPublisher = 0
+            var idTag: Int
+            if (tagList.isNotEmpty()) idTag = tagList.get(tagList.indexOf(tagList.get(tagList.size - 1))).id
+            else idTag = 0
             for (i: Int in 1..tags.size) {
-                var tag = Tags(idPublisher + i, tags[i - 1])
-                if (idPublisher != 0) {
+                var tag = Tags(idTag + i, tags[i - 1])
+                if (idTag != 0) {
                     if (!(isTagOnList(tag.tags, tagList))) {
                         insertTag(tag)
                         insertBookxTags(BookxTags(book.id, tag.id))
@@ -115,6 +115,32 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
                 }
             }
         }
+    }
+
+    fun insertListPublisher(publishers: ArrayList<String>): Int {
+        var publishersList = allPublishers.value
+        lateinit var publisher: Publisher
+        if (publishersList != null) {
+            var idEditorial: Int
+            if (publishersList.isNotEmpty()) idEditorial =
+                publishersList.get(publishersList.indexOf(publishersList.get(publishersList.size - 1))).id
+            else idEditorial = 0
+            for (i: Int in 1..publishers.size) {
+                publisher = Publisher(idEditorial + i, publishers[i - 1])
+                if (idEditorial != 0) {
+                    if (!(isPublisherOnList(publisher.name, publishersList))) {
+                        insertPublisher(publisher)
+                        return publisher.id
+                    } else {
+                        return getPublisherIndex(publisher.name, publishersList)
+                    }
+                } else {
+                    insertPublisher(publisher)
+                    return 1
+                }
+            }
+        }
+        return -1;
     }
 
     private fun isAuthorOnList(name: String, authorList: List<Author>): Boolean {
@@ -136,5 +162,14 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
             if (name == publisher.name) return true
         }
         return false
+    }
+
+    private fun getPublisherIndex(name: String, publisherList: List<Publisher>): Int {
+        var i: Int = 1
+        for (publisher: Publisher in publisherList) {
+            if (name == publisher.name) return i
+            i++
+        }
+        return -1
     }
 }
