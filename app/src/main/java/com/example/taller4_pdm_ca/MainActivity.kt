@@ -1,55 +1,67 @@
-package com.example.taller4_pdm_ca.activities
+package com.example.taller4_pdm_ca
 
-import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.taller4_pdm_ca.R
-import com.example.taller4_pdm_ca.adapter.BookListAdapter
+import androidx.fragment.app.Fragment
+import com.example.taller4_pdm_ca.activities.NewBookActivity
+import com.example.taller4_pdm_ca.fragments.BookListFragment
 import com.example.taller4_pdm_ca.pojos.Book
 import com.example.taller4_pdm_ca.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BookListFragment.BookListener {
 
     private val newWordActivityRequestCode = 1
+
+    var cont : Int = 0
+
     private lateinit var bookViewModel: BookViewModel
+    private lateinit var listFragment: BookListFragment
     //private lateinit var authorViewModel: AuthorViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //setSupportActionBar(toolbar)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rv_books)
-        val adapter = BookListAdapter(this)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        bookViewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
-        //authorViewModel = ViewModelProviders.of(this).get(AuthorViewModel::class.java)
+        fab.setOnClickListener { view ->
+            cont++
+            startActivity(Intent(this, NewBookActivity::class.java).putExtra("cont", cont))
+            //val intent = Intent(this@MainActivity, NewBookActivity::class.java)
+            //startActivityForResult(intent, newWordActivityRequestCode)
+        }
 
-        bookViewModel.allBooks.observe(this, Observer { books ->
-            // Update the cached copy of the words in the adapter.
-            books?.let { adapter.setWords(it) }
-        })
-
-        /*authorViewModel.allAuthors.observe(this, Observer { authors ->
-            // Update the cached copy of the words in the adapter.
-            authors?.let { adapter.setAuthors(it) }
-        })*/
+        initFragment()
+    }
 
 
-        /*fab.setOnClickListener { view ->
-            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
-            startActivityForResult(intent, newWordActivityRequestCode)
-        }*/
+    fun initFragment(){
+        listFragment = BookListFragment.newInstance()
+
+        val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+
+            R.id.primarymain
+
+        }
+        else {
+            R.id.primarymain
+            Log.d("olv", "No hay fragmento")
+        }
+        changeFragment(resource,listFragment)
+    }
+
+    private fun changeFragment(id: Int, frag: Fragment){ supportFragmentManager.beginTransaction().replace(id, frag).commit()}
+
+    override fun managePortraitClick(book: Book) {
+        Log.d("olv", "Algo")
+        Toast.makeText(this, book.title, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun manageLandscapeClick(book: Book) {
+        Log.d("llv", book.title)
     }
 
     /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -58,10 +70,10 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.let {
                 //val list = Array<Author>()
-                val book = Book("",it.getStringExtra(NewWordActivity.EXTRA_REPLY),"","")
-                val author = Author( it.getStringExtra(NewWordActivity.EXTRA_REPLY2),true)
+                val book = Book(0,"",it.getStringExtra(NewBookActivity.EXTRA_REPLY),"", "", "", false, 0)
+                //val author = Author( it.getStringExtra(NewWordActivity.EXTRA_REPLY2),true)
                 bookViewModel.insert(book)
-                authorViewModel.insert(author)
+                //authorViewModel.insert(author)
             }
         } else {
             Toast.makeText(
@@ -87,3 +99,4 @@ class MainActivity : AppCompatActivity() {
         }
     }*/
 }
+

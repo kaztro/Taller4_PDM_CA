@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
         Tags::class,
         AuthorxBook::class,
         BookxTags::class
-    ), version = 4
+    ), version = 6
 )
 public abstract class LibraryRoomDatabase : RoomDatabase() {
     abstract fun authorDao(): AuthorDao
@@ -80,9 +80,20 @@ public abstract class LibraryRoomDatabase : RoomDatabase() {
             publisherDao: PublisherDao,
             tagsDao: TagsDao
         ) {
-            //var book = Book(0, "a", "a", "a", "a", "1", false)
+
+            //authorDao.deleteAll()
+            //bookDao.deleteAll()
+            //publisherDao.deleteAll()
+
+            var aut = Author(0, "Garcia Marquez")
+            authorDao.insert(aut)
+
+            var pub = Publisher(0,"Planeta")
+            publisherDao.insert(pub)
+
+            var book = Book(0, "a", "Cuentos de mi mama", "a", "a", "1", false,0)
             //Log.d("lista", book.title)
-            //bookDao.insert(book)
+            bookDao.insert(book)
             //val all = bookDao.getAllBooks()
             //Log.d("lista", all[0].title)
         }

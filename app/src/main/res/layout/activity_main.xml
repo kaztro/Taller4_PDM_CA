@@ -5,19 +5,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".activities.MainActivity">
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_favorites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Biblioteca"
+    android:layout_gravity="center" android:padding="5dp" android:textSize="25dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_books"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+            android:id="@+id/primarymain"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:orientation="vertical">
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -26,6 +26,9 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_add_black_24dp"/>
+
+
+
 
 
 </LinearLayout>

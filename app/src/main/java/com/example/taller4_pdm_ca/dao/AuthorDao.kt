@@ -9,6 +9,10 @@ import com.example.taller4_pdm_ca.pojos.Author
 
 @Dao
 interface AuthorDao {
+
+    @Query("DELETE FROM author_table")
+    fun deleteAll()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(author:Author)
 
